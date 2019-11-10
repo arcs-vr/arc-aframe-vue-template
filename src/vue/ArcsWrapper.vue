@@ -61,7 +61,7 @@
   THREE.Mesh.prototype.raycast                     = acceleratedRaycast
 
   export default {
-    name: 'arcs-wrapper',
+    name: 'arc-wrapper',
 
     components: {
       AframeCameraRig,

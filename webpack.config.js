@@ -17,7 +17,7 @@ Encore
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction())
 
-  .addEntry('build/main', './src/js/main.js')
+  .addEntry('build/main', './src/main.js')
 
   .addExternals({
     three: 'THREE',

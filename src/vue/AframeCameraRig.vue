@@ -8,7 +8,6 @@
                 protocol: ${protocol};
                 app: ${app};
               `"
-              camera-rig
               id="camera-rig"
               position="0 1.88 0"
               rotation="0 0 0"
@@ -37,7 +36,6 @@
 <script>
   import 'arc-component'
   import 'arc-cursor'
-  import './CameraRig.js'
 
   export default {
     name: 'aframe-camera-rig',

@@ -1,12 +1,25 @@
 {
   "name": "arc-vue-template",
   "version": "0.1.0",
-  "description": "Template repository for an A-Frame, ARCS & Vue.js project",
-  "main": "main.js",
-  "author": "Barthy Bonhomme <post@barthy.koeln>",
-  "repository": "https://github.com/arcs-vr/arc-vue-template",
   "license": "MIT",
+  "description": "Template repository for an A-Frame, ARCS & Vue.js project",
+  "repository": "https://github.com/arcs-vr/arc-vue-template",
+  "author": "Barthy Bonhomme <post@barthy.koeln>",
   "private": false,
+  "keywords": [
+    "aframe",
+    "aframe-controls",
+    "ARCS",
+    "MQTT",
+    "proxy",
+    "remote",
+    "socket",
+    "VR",
+    "WebXR",
+    "WebVR",
+    "websocket",
+    "WebRTC"
+  ],
   "scripts": {
     "dev-server": "UV_THREADPOOL_SIZE=100 encore dev-server --host 0.0.0.0 --port 3000",
     "dev": "encore dev",
@@ -16,21 +29,14 @@
   "browserslist": [
     "last 2 versions"
   ],
-  "keywords": [
-    "aframe",
-    "arcs",
-    "remote",
-    "mqtt",
-    "webxr",
-    "webvr",
-    "vr"
-  ],
+  "desktop": "src/main.js",
   "dependencies": {
     "aframe": "^0.9.2",
     "arc-ci": "arcs-vr/arc-ci",
     "arc-component": "arcs-vr/arc-component",
     "arc-cursor": "arcs-vr/arc-cursor",
     "arc-remotes": "arcs-vr/arc-remotes",
+    "regenerator-runtime": "^0.13.3",
     "three": "^0.110.0",
     "three-mesh-bvh": "^0.1.4",
     "vue": "^2.6.10",
