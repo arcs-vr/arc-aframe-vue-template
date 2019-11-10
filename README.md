@@ -7,6 +7,7 @@ It ships the ARCS corporate identity design and basic components such as:
 
 - Remote controls connection button next to the "enter VR" button
 - A modal for connecting to the remote control device
+- A camera rig that handles movement and cursor interaction
 - Remote control interfaces for desktops and handheld touchscreen devices
 
 ## Installation
