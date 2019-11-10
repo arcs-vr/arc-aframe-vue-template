@@ -1,6 +1,6 @@
-import Vue         from 'vue'
-import Router      from 'vue-router'
-import { appName, config } from './arc-config.js'
+import Vue        from 'vue'
+import Router     from 'vue-router'
+import { config } from './arc-config.js'
 
 Vue.use(Router)
 
@@ -9,7 +9,6 @@ const ArcRemoteSelector = () => import(/* webpackChunkName: "remote-selector" */
 const ArcDesktop        = () => import(/* webpackChunkName: "arc-desktop" */ 'arc-remotes/src/components/ArcDesktop.vue')
 const ArcSmartphone     = () => import(/* webpackChunkName: "arc-smartphone" */ 'arc-remotes/src/components/ArcSmartphone.vue')
 
-
 export const router = new Router({
   mode: 'history',
   hash: false,
@@ -17,10 +16,9 @@ export const router = new Router({
     {
       path: '/',
       component: ArcsWrapper,
-      props: {
+      props: Object.extend(config, {
         routeRemote: 'remote-selector',
-        appName: appName
-      },
+      }),
       name: 'index',
     },
     {

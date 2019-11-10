@@ -1044,6 +1044,13 @@ arc-component@arcs-vr/arc-component, "arc-component@github:arcs-vr/arc-component
     async-mqtt "^2.4.2"
     three "^0.109.0"
 
+arc-cursor@arcs-vr/arc-cursor:
+  version "0.1.0"
+  resolved "https://codeload.github.com/arcs-vr/arc-cursor/tar.gz/9a3b04ea879b553a12a1162adf721ac46b514037"
+  dependencies:
+    aframe "^0.9.2"
+    three "^0.110.0"
+
 arc-remotes@arcs-vr/arc-remotes:
   version "0.3.0"
   resolved "https://codeload.github.com/arcs-vr/arc-remotes/tar.gz/4ac057bfbb5261f720a05c3eb2df2dcbb5563ec5"

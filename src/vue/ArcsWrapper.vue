@@ -22,7 +22,14 @@
         </transition>
 
         <aframe-assets @loaded="assetsLoaded = true"></aframe-assets>
+
         <aframe-app></aframe-app>
+
+        <aframe-camera-rig :app="app"
+                           :host="host"
+                           :protocol="protocol"
+                           :port="port"
+        ></aframe-camera-rig>
 
         <arc-connect-button @arc-connect="showModal = true"></arc-connect-button>
         <transition appear
@@ -45,8 +52,9 @@
   import ArcConnectButton from 'arc-remotes/src/components/ArcConnectButton.vue'
   import ArcConnectModal  from 'arc-remotes/src/components/ArcConnectModal.vue'
 
-  import AframeAssets from './AframeAssets.vue'
-  import AframeApp    from './AframeApp.vue'
+  import AframeAssets    from './AframeAssets.vue'
+  import AframeApp       from './AframeApp.vue'
+  import AframeCameraRig from './AframeCameraRig.vue'
 
   THREE.BufferGeometry.prototype.computeBoundsTree = computeBoundsTree
   THREE.BufferGeometry.prototype.disposeBoundsTree = disposeBoundsTree
@@ -56,6 +64,7 @@
     name: 'arcs-wrapper',
 
     components: {
+      AframeCameraRig,
       ArcLogo,
       ArcConnectButton,
       ArcConnectModal,
@@ -64,14 +73,26 @@
     },
 
     props: {
+      app: {
+        type: String,
+        required: true
+      },
+      host: {
+        type: String,
+        default: 'localhost'
+      },
+      port: {
+        type: Number,
+        default: 3030
+      },
+      protocol: {
+        type: String,
+        default: 'http'
+      },
       routeRemote: {
         type: String,
         required: true
       },
-      appName: {
-        type: String,
-        required: true
-      }
     },
 
     data () {

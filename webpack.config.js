@@ -19,6 +19,11 @@ Encore
 
   .addEntry('build/main', './src/js/main.js')
 
+  .addExternals({
+    three: 'THREE',
+    aframe: 'AFRAME'
+  })
+
   .enableVueLoader()
   .enableSassLoader()
   .enablePostCssLoader(function (options) {
