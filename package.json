@@ -11,6 +11,8 @@
     "arc-ci": "arcs-vr/arc-ci",
     "arc-component": "arcs-vr/arc-component",
     "arc-remotes": "arcs-vr/arc-remotes",
+    "css-loader": "^3.2.0",
+    "debug": "^2.6.9",
     "three": "^0.110.0",
     "three-mesh-bvh": "^0.1.4",
     "vue": "^2.6.10",
