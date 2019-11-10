@@ -5,7 +5,8 @@ This repository is a template for projects using [A-Frame](https://github.com/af
 
 ## Installation
 
-Click the 'Use this template' button above, or do all of the following steps:
+Click the "Use this template" button above, [click here](https://github.com/arcs-vr/arc-vue-template/generate) to 
+generate a GitHub repository, or do all of the following steps:
 
 ```bash
 git clone https://github.com/arcs-vr/arc-vue-template [project_name]
