@@ -1,7 +1,9 @@
 <template functional
           v-once
 >
-    <a-assets @loaded="listeners['assets-loaded']"></a-assets>
+    <a-assets @loaded="listeners['assets-loaded']">
+        <!-- Insert A-Frame assets here -->
+    </a-assets>
 </template>
 
 <script>
