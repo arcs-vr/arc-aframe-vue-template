@@ -16,9 +16,13 @@ export const router = new Router({
     {
       path: '/',
       component: ArcsWrapper,
-      props: Object.extend(config, {
-        routeRemote: 'remote-selector',
-      }),
+      props: Object.assign(
+        {},
+        config,
+        {
+          routeRemote: 'remote-selector',
+        }
+      ),
       name: 'index',
     },
     {

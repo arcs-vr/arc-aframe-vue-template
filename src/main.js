@@ -3,6 +3,7 @@ import 'core-js/features/map'
 import 'core-js/features/promise'
 import 'core-js/features/object/keys'
 import 'core-js/features/object/entries'
+import 'core-js/features/object/assign'
 import 'regenerator-runtime/runtime'
 
 import Vue      from 'vue'
