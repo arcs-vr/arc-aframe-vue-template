@@ -3,10 +3,10 @@
 >
     <a-entity :arc-component="`
                 camera: #main-camera;
-                host: ${host};
-                port: ${port};
-                protocol: ${protocol};
-                app: ${app};
+                host: ${props.host};
+                port: ${props.port};
+                protocol: ${props.protocol};
+                app: ${props.app};
               `"
               id="camera-rig"
               position="0 1.88 0"

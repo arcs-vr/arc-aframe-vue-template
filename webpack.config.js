@@ -1,7 +1,7 @@
-const Encore                 = require('@symfony/webpack-encore')
-const HtmlWebPackPlugin      = require('html-webpack-plugin')
-const TerserPlugin           = require('terser-webpack-plugin')
-const path                   = require('path')
+const Encore            = require('@symfony/webpack-encore')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const TerserPlugin      = require('terser-webpack-plugin')
+const path              = require('path')
 
 Encore
   .enableBuildNotifications(true)
@@ -10,14 +10,20 @@ Encore
 
   .setOutputPath('public')
   .setPublicPath('/')
-  .setManifestKeyPrefix('public/')
 
-  .cleanupOutputBeforeBuild()
+  .cleanupOutputBeforeBuild(['public/build'])
 
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction())
 
   .addEntry('build/main', './src/main.js')
+
+  .configureFilenames({
+    js: 'build/js/[name].[contenthash].js',
+    css: 'build/css/[name].[contenthash].css',
+    images: 'build/images/[name].[hash:8].[ext]',
+    fonts: 'build/fonts/[name].[hash:8].[ext]'
+  })
 
   .addExternals({
     three: 'THREE',
@@ -43,10 +49,19 @@ Encore
       }
     },
     {
-      useBuiltIns: 'usage',
+      useBuiltIns: 'entry',
       corejs: '3'
     }
   )
+
+  .configureTerserPlugin(function (options) {
+    options.extractComments = false
+    options.terserOptions   = {
+      output: {
+        comments: false
+      }
+    }
+  })
 
   .addPlugin(new HtmlWebPackPlugin({
     filename: 'index.html',
@@ -64,20 +79,8 @@ Encore
 
 const config = Encore.getWebpackConfig()
 
-if (Encore.isProduction()) {
-  config.optimization = {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          output: {
-            comments: false,
-          },
-        },
-        extractComments: false,
-      })
-    ],
-  }
+config.optimization = {
+  minimize: Encore.isProduction(),
 }
 
 module.exports = config

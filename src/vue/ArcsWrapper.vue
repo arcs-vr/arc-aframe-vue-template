@@ -23,7 +23,7 @@
 
         <aframe-assets @loaded="assetsLoaded = true"></aframe-assets>
 
-        <aframe-app></aframe-app>
+        <aframe-app v-if="assetsLoaded"></aframe-app>
 
         <aframe-camera-rig :app="app"
                            :host="host"
@@ -108,7 +108,7 @@
      * Add the draco decoder path after mounting the component. WThere are some issues otherwise.
      */
     mounted () {
-      this.$refs.scene.setAttribute('gltf-model', 'dracoDecoderPath: /static/decoder/;')
+      this.$refs.scene.setAttribute('gltf-model', 'dracoDecoderPath: /decoder/;')
     },
 
     methods: {
@@ -118,7 +118,7 @@
        */
       connect (deviceName) {
         this.$refs.scene.emit('arcs-connect', {
-          paircode: this.appName + '-' + deviceName.replace(' ', '-').toLowerCase()
+          paircode: this.app + '-' + deviceName.replace(' ', '-').toLowerCase()
         })
 
         this.showModal = false
@@ -141,7 +141,7 @@
        * @return {boolean}
        */
       showSplash () {
-        return sceneLoaded && assetsLoaded
+        return !this.sceneLoaded && !this.assetsLoaded
       }
     }
   }
