@@ -1,6 +1,6 @@
 {
   "name": "arc-vue-template",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "description": "Template repository for an A-Frame, ARCS & Vue.js project",
   "repository": "https://github.com/arcs-vr/arc-vue-template",
@@ -21,6 +21,7 @@
     "WebRTC"
   ],
   "scripts": {
+    "mqtt-broker": "mosquitto -c conf/mosquitto.conf",
     "dev-server": "UV_THREADPOOL_SIZE=100 encore dev-server --host 0.0.0.0 --port 3000",
     "dev": "encore dev",
     "watch": "encore dev --watch",
