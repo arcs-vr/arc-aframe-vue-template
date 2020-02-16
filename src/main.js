@@ -22,6 +22,7 @@ Vue.config.ignoredElements = [
 ]
 
 const vm = new Vue({
+  // language=Vue
   template: '<router-view :key="$route.fullPath"/>',
   router: router
 })

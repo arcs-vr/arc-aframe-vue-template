@@ -1,12 +1,17 @@
 <template>
-    <a-scene @click.capture="showModal = false"
+    <a-scene :arc-system="`
+                host: ${host};
+                port: ${port};
+                protocol: ${protocol};
+                app: ${app};
+              `"
              @loaded.self="sceneLoaded = true"
              loading-screen="enabled: false;"
              ref="scene"
              renderer="
                 antialias: true;
-                physicallyCorrectLights: true;
-                colorManagement: false;
+                colorManagement: true;
+                alpha: false;
              "
     >
         <transition mode="out-in"
@@ -21,15 +26,13 @@
             </div>
         </transition>
 
-        <aframe-assets @loaded="assetsLoaded = true"></aframe-assets>
+        <aframe-assets @loaded="assetsLoaded = true"/>
 
-        <aframe-app v-if="assetsLoaded"></aframe-app>
+        <aframe-app @loaded="appLoaded = true"
+                    v-if="assetsLoaded"
+        />
 
-        <aframe-camera-rig :app="app"
-                           :host="host"
-                           :protocol="protocol"
-                           :port="port"
-        ></aframe-camera-rig>
+        <aframe-camera-rig/>
 
         <arc-connect-button @arc-connect="showModal = true"></arc-connect-button>
         <transition appear
@@ -38,6 +41,7 @@
         >
             <arc-connect-modal :remote-url="remoteUrl"
                                @arc-connect="connect"
+                               @close="showModal = false"
                                v-if="showModal"
             ></arc-connect-modal>
         </transition>
@@ -45,12 +49,14 @@
 </template>
 
 <script>
-  import 'aframe/dist/aframe-v0.9.2.js'
+  import 'aframe/dist/aframe-v1.0.3.js'
   import { acceleratedRaycast, computeBoundsTree, disposeBoundsTree } from 'three-mesh-bvh'
+  import 'arc-aframe-system'
 
   import ArcLogo          from 'arc-ci/template/ArcLogo.vue'
   import ArcConnectButton from 'arc-remotes/src/components/ArcConnectButton.vue'
   import ArcConnectModal  from 'arc-remotes/src/components/ArcConnectModal.vue'
+  import { ArcEvents }   from 'arc-events'
 
   import AframeAssets    from './AframeAssets.vue'
   import AframeApp       from './AframeApp.vue'
@@ -98,17 +104,10 @@
     data () {
       return {
         showModal: false,
-        showSplash: true,
+        appLoaded: false,
         assetsLoaded: false,
         sceneLoaded: false
       }
-    },
-
-    /**
-     * Add the draco decoder path after mounting the component. WThere are some issues otherwise.
-     */
-    mounted () {
-      this.$refs.scene.setAttribute('gltf-model', 'dracoDecoderPath: /decoder/;')
     },
 
     methods: {
@@ -118,7 +117,7 @@
        */
       connect (deviceName) {
         this.$refs.scene.emit('arcs-connect', {
-          paircode: this.app + '-' + deviceName.replace(' ', '-').toLowerCase()
+          deviceName: deviceName
         })
 
         this.showModal = false
@@ -154,6 +153,7 @@
 
     .splash {
         align-items: center;
+        backface-visibility: hidden;
         background-color: $theme-dark;
         color: $theme-light;
         display: flex;
@@ -161,13 +161,12 @@
         height: 100%;
         justify-content: center;
         left: 0;
+        perspective: 1000px;
         position: fixed;
         top: 0;
+        transform: translateZ(0);
         width: 100%;
         z-index: 10000;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-        perspective: 1000px;
     }
 </style>
 
@@ -193,8 +192,9 @@
     }
 
     .logo {
+        max-height: 60%;
         max-width: 500px;
+        padding: 5vh;
         width: 80vmin;
-        padding: 3rem;
     }
 </style>

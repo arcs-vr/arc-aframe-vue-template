@@ -2,7 +2,11 @@
           v-once
 >
     <a-assets @loaded="listeners['loaded']">
-        <!-- Insert A-Frame assets here -->
+
+        <a-asset-item id="model"
+                      src="/models/model.gltf"
+        />
+
     </a-assets>
 </template>
 
