@@ -21,8 +21,7 @@
     "WebRTC"
   ],
   "scripts": {
-    "mqtt-broker": "mosquitto -c conf/mosquitto.conf",
-    "dev-server": "UV_THREADPOOL_SIZE=100 encore dev-server --host 0.0.0.0 --port 3000",
+    "dev-server": "UV_THREADPOOL_SIZE=100 encore dev-server --https --port 3000",
     "dev": "encore dev",
     "watch": "encore dev --watch",
     "build": "encore production"
@@ -32,7 +31,7 @@
   ],
   "desktop": "src/main.js",
   "dependencies": {
-    "aframe": "^0.9.2",
+    "aframe": "^1.0.3",
     "aframe-intersection-events": "barthy-koeln/aframe-intersection-events",
     "arc-aframe-system": "arcs-vr/arc-aframe-system",
     "arc-ci": "arcs-vr/arc-ci",
@@ -40,7 +39,7 @@
     "arc-events": "arcs-vr/arc-events",
     "arc-remotes": "arcs-vr/arc-remotes",
     "regenerator-runtime": "^0.13.3",
-    "three-mesh-bvh": "^0.1.4",
+    "three-mesh-bvh": "^0.1.5",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3"
   },
