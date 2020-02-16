@@ -56,7 +56,6 @@
   import ArcLogo          from 'arc-ci/template/ArcLogo.vue'
   import ArcConnectButton from 'arc-remotes/src/components/ArcConnectButton.vue'
   import ArcConnectModal  from 'arc-remotes/src/components/ArcConnectModal.vue'
-  import { ArcEvents }   from 'arc-events'
 
   import AframeAssets    from './AframeAssets.vue'
   import AframeApp       from './AframeApp.vue'
