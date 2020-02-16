@@ -15,9 +15,10 @@ It ships the ARCS corporate identity design and basic components such as:
 Click the "Use this template" button above, [click here](https://github.com/arcs-vr/arc-vue-template/generate) to 
 generate a GitHub repository, or perform these steps:
 
-```bash
+```shell script
 git clone https://github.com/arcs-vr/arc-vue-template [project_name]
-git remote set-url https://github.com/USERNAME/REPOSITORY.git
+cd [project_name]
+git remote set-url origin https://github.com/[USERNAME]/[REPOSITORY].git
 ```
 
 ## Configuration
@@ -28,7 +29,7 @@ Edit the file located at `src/arc-config.js` and enter a unique app name, and th
 
 Use the predefined scripts:
 
-```bash
+```shell script
 # WebPack's dev-server
 yarn dev-server
 
@@ -52,13 +53,13 @@ I suggest creating a directory called `src/aframe` for all A-Frame components.
 
 Build the project:
 
-```bash
+```shell script
 yarn build
 ```
 
 Then deploy everything inside the `public` directory:
 
-```bash
+```shell script
 rsync -r --progress --stats -h --delete -a $PWD/public/* [user]@[host]:/var/www/[project-docroot]/
 ```
 
